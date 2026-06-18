@@ -2,6 +2,10 @@
 
 A shell that accepts commands written in Chinese characters. This is just a playground project with no high expectations, but just to play with while I learn Chinese language.
 
+## ⚠️ AI Warning ⚠️
+
+This project has been mostly and shamelessly vibe-coded. Be careful and lower your expectations.
+
 ## Usage
 
 ```
@@ -19,7 +23,7 @@ Chinese       Pinyin                Description
 帮            bāng                  show available commands
 出口          chūkǒu                exit the shell
 进入          jìnrù                 change current directory
-这个目录      zhège mùlù            print working directory
+这个目录       zhège mùlù            print working directory
 运行          yùnxíng               run a program at the given path
 
 zhell> 这个目录
