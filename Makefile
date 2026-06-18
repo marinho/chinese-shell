@@ -2,7 +2,7 @@
 run:
 	@echo "Building zhell..."
 	@mkdir -p ./bin
-	@go build -o bin/zhell main.go
+	@go build -o bin/zhell .
 	@echo "Running zhell..."
 	@./bin/zhell
 

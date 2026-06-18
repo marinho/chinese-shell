@@ -19,8 +19,9 @@ import (
 const prompt = "zhell> "
 
 func main() {
-	fmt.Println("欢迎使用 zhell！输入 '出口' 退出。")
-	fmt.Println("Welcome to zhell! Type '出口' to exit.")
+	commands.SetVersion(version)
+	fmt.Printf("欢迎使用 zhell v%s！输入 '出口' 退出。\n", version)
+	fmt.Printf("Welcome to zhell v%s! Type '出口' to exit.\n", version)
 	fmt.Println()
 	commands.PrintTable()
 	fmt.Println()

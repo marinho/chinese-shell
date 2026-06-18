@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/mattn/go-runewidth"
 )
 
 // Command is the interface every zhell command must implement.
@@ -20,6 +22,14 @@ type Command interface {
 
 // registry holds all registered commands keyed by their Chinese name.
 var registry = map[string]Command{}
+
+var appVersion = "dev"
+
+// SetVersion sets the application version shown in commands like 关于.
+func SetVersion(v string) { appVersion = v }
+
+// Version returns the current application version.
+func Version() string { return appVersion }
 
 // Register adds a command to the global registry.
 // Typically called from an init() function in each command file.
@@ -51,10 +61,19 @@ func PrintTable() {
 	}
 	sort.Strings(keys)
 
-	fmt.Printf("%-12s  %-20s  %s\n", "Chinese", "Pinyin", "Description")
-	fmt.Println(strings.Repeat("-", 50))
+	const colChinese, colPinyin = 14, 22
+	pad := func(s string, width int) string {
+		w := runewidth.StringWidth(s)
+		if w >= width {
+			return s
+		}
+		return s + strings.Repeat(" ", width-w)
+	}
+
+	fmt.Printf("%s  %s  %s\n", pad("Chinese", colChinese), pad("Pinyin", colPinyin), "Description")
+	fmt.Println(strings.Repeat("-", colChinese+colPinyin+20))
 	for _, k := range keys {
 		cmd := all[k]
-		fmt.Printf("%-12s  %-20s  %s\n", cmd.Name(), cmd.Pinyin(), cmd.Description())
+		fmt.Printf("%s  %s  %s\n", pad(cmd.Name(), colChinese), pad(cmd.Pinyin(), colPinyin), cmd.Description())
 	}
 }
