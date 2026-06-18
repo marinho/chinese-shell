@@ -1,5 +1,11 @@
 package commands
 
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
+
 // Command is the interface every zhell command must implement.
 type Command interface {
 	// Name returns the Chinese command string (e.g. "出口").
@@ -34,4 +40,21 @@ func All() map[string]Command {
 		out[k] = v
 	}
 	return out
+}
+
+// PrintTable prints all registered commands as a formatted table.
+func PrintTable() {
+	all := All()
+	keys := make([]string, 0, len(all))
+	for k := range all {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	fmt.Printf("%-12s  %-20s  %s\n", "Chinese", "Pinyin", "Description")
+	fmt.Println(strings.Repeat("-", 50))
+	for _, k := range keys {
+		cmd := all[k]
+		fmt.Printf("%-12s  %-20s  %s\n", cmd.Name(), cmd.Pinyin(), cmd.Description())
+	}
 }

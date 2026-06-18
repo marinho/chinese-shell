@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"sort"
 	"strings"
 
 	// Importing the commands package causes all init() functions in
@@ -16,27 +15,11 @@ import (
 
 const prompt = "zhell> "
 
-func printCommandTable() {
-	all := commands.All()
-	keys := make([]string, 0, len(all))
-	for k := range all {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
-
-	fmt.Printf("%-12s  %-20s  %s\n", "Chinese", "Pinyin", "Description")
-	fmt.Println(strings.Repeat("-", 50))
-	for _, k := range keys {
-		cmd := all[k]
-		fmt.Printf("%-12s  %-20s  %s\n", cmd.Name(), cmd.Pinyin(), cmd.Description())
-	}
-}
-
 func main() {
 	fmt.Println("欢迎使用 zhell！输入 '出口' 退出。")
 	fmt.Println("Welcome to zhell! Type '出口' to exit.")
 	fmt.Println()
-	printCommandTable()
+	commands.PrintTable()
 	fmt.Println()
 
 	scanner := bufio.NewScanner(os.Stdin)
