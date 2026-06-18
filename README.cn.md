@@ -23,7 +23,9 @@ Chinese       Pinyin                Description
 帮            bāng                  show available commands
 出口          chūkǒu                exit the shell
 日期          rìqī                  print current date and time
+列出          lièchū                list files in current directory
 进入          jìnrù                 change current directory
+猫            māo                   print contents of a file
 这个目录       zhège mùlù            print working directory
 运行          yùnxíng               run a program at the given path
 
@@ -44,7 +46,9 @@ Goodbye! Thanks for using zhell!
 | 帮       | bāng         | `help`     | 显示可用命令                |
 | 出口     | chūkǒu       | `exit`     | 退出 Shell                  |
 | 日期     | rìqī         | `date`     | 打印当前日期和时间          |
+| 列出     | lièchū       | `ls -la`   | 列出当前目录的文件          |
 | 进入     | jìnrù        | `cd`       | 切换当前目录                |
+| 猫      | māo          | `cat`      | 打印文件内容                |
 | 这个目录 | zhège mùlù   | `pwd`      | 打印当前目录                |
 | 运行     | yùnxíng      | —          | 运行指定路径的程序          |
 
