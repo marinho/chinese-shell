@@ -15,21 +15,6 @@ make
 This builds and launches the REPL. At the `zhell>` prompt, type a Chinese command and press Enter.
 
 ```
-欢迎使用 zhell！输入 '出口' 退出。
-Welcome to zhell! Type '出口' to exit.
-
-Chinese       Pinyin                Description
---------------------------------------------------
-帮            bāng                  show available commands
-出口          chūkǒu                exit the shell
-日期          rìqī                  print current date and time
-列出          lièchū                list files in current directory
-进入          jìnrù                 change current directory
-猫            māo                   print contents of a file
-触            chù                   create an empty file or update its timestamp
-这个目录       zhège mùlù            print working directory
-运行          yùnxíng               run a program at the given path
-
 zhell> 这个目录
 /Users/you/projects/zhell
 
@@ -51,6 +36,8 @@ Goodbye! Thanks for using zhell!
 | 进入     | jìnrù        | `cd`       | Change current directory                       |
 | 猫      | māo          | `cat`      | Print contents of a file                       |
 | 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
+| 少      | shǎo         | `less`     | View file contents with a pager                |
+| 多      | duō          | `more`     | View file contents with a pager (forward only) |
 | 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
 | 运行     | yùnxíng      | —          | Run a program at the given path                |
 
