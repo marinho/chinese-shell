@@ -1,6 +1,8 @@
 # zhell
 
-A shell that accepts commands written in Chinese characters.
+A shell that accepts commands written in Chinese characters. This is just a playground project with no high expectations, but just to play with while I learn Chinese language.
+
+
 
 ## Usage
 
@@ -21,9 +23,9 @@ Goodbye! Thanks for using zhell!
 
 ## Commands
 
-| Command | Meaning         |
-|---------|-----------------|
-| 出口    | Exit the shell  |
+| Command | Equivalent in other shells | Meaning |
+|---------|-----------------|-----------------|
+| 出口    | exit | Exit the shell  |
 
 ## Adding a command
 

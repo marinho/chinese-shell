@@ -4,6 +4,8 @@ package commands
 type Command interface {
 	// Name returns the Chinese command string (e.g. "出口").
 	Name() string
+	// Pinyin returns the romanised pronunciation (e.g. "chūkǒu").
+	Pinyin() string
 	// Description is a short help string shown in the shell.
 	Description() string
 	// Execute runs the command with the given arguments.

@@ -4,6 +4,6 @@ run:
 	@mkdir -p ./bin
 	@go build -o bin/zhell main.go
 	@echo "Running zhell..."
-	@./zhell
+	@./bin/zhell
 
 default: run
