@@ -42,6 +42,7 @@ Goodbye! Thanks for using zhell!
 | 移动     | yídòng       | `mv`       | 移动或重命名文件或目录            |
 | 复制     | fùzhì        | `cp`       | 复制文件或目录到另一路径          |
 | 删除     | shānchú      | `rm`       | 删除文件或目录                    |
+| 新目录   | xīn mùlù    | `mkdir`    | 创建新目录                        |
 | 这个目录 | zhège mùlù   | `pwd`      | 打印当前目录                      |
 | 运行     | yùnxíng      | —          | 运行指定路径的程序                |
 

@@ -33,17 +33,18 @@ Goodbye! Thanks for using zhell!
 | 出口     | chūkǒu       | `exit`     | Exit the shell                                 |
 | 日期     | rìqī         | `date`     | Print current date and time                    |
 | 列出     | lièchū       | `ls -la`   | List files in current directory                |
+| 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
 | 进入     | jìnrù        | `cd`       | Change current directory                       |
-| 猫      | māo          | `cat`      | Print contents of a file                       |
-| 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
-| 少      | shǎo         | `less`     | View file contents with a pager                |
-| 多      | duō          | `more`     | View file contents with a pager (forward only) |
-| 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
 | 移动     | yídòng       | `mv`       | Move or rename a file or directory             |
 | 复制     | fùzhì        | `cp`       | Copy a file or directory to another path       |
 | 删除     | shānchú      | `rm`       | Remove a file or directory                     |
-| 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
+| 新目录   | xīn mùlù    | `mkdir`    | Create a new directory                         |
 | 运行     | yùnxíng      | —          | Run a program at the given path                |
+| 猫      | māo          | `cat`      | Print contents of a file                       |
+| 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
+| 多      | duō          | `more`     | View file contents with a pager (forward only) |
+| 少      | shǎo         | `less`     | View file contents with a pager                |
+| 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
 
 ## Adding a command
 
