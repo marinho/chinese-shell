@@ -1,10 +1,13 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"io"
 	"os"
+	"path/filepath"
 	"strings"
+
+	"github.com/chzyer/readline"
 
 	// Importing the commands package causes all init() functions in
 	// that package to run, registering every command automatically.
@@ -22,18 +25,36 @@ func main() {
 	commands.PrintTable()
 	fmt.Println()
 
-	scanner := bufio.NewScanner(os.Stdin)
+	historyFile := filepath.Join(os.Getenv("HOME"), ".zhell_history")
+
+	rl, err := readline.NewEx(&readline.Config{
+		Prompt:          prompt,
+		HistoryFile:     historyFile,
+		HistoryLimit:    100,
+		InterruptPrompt: "^C",
+		EOFPrompt:       "exit",
+	})
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "zhell: readline init error: %v\n", err)
+		os.Exit(1)
+	}
+	defer rl.Close()
 
 	for {
-		fmt.Print(prompt)
-
-		if !scanner.Scan() {
-			// EOF (Ctrl-D)
+		line, err := rl.Readline()
+		if err == readline.ErrInterrupt {
+			continue
+		}
+		if err == io.EOF {
 			fmt.Println()
 			break
 		}
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "zhell: %v\n", err)
+			break
+		}
 
-		line := strings.TrimSpace(scanner.Text())
+		line = strings.TrimSpace(line)
 		if line == "" {
 			continue
 		}
