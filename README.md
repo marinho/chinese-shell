@@ -38,6 +38,7 @@ Goodbye! Thanks for using zhell!
 | 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
 | 少      | shǎo         | `less`     | View file contents with a pager                |
 | 多      | duō          | `more`     | View file contents with a pager (forward only) |
+| 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
 | 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
 | 运行     | yùnxíng      | —          | Run a program at the given path                |
 

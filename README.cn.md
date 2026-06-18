@@ -38,6 +38,7 @@ Goodbye! Thanks for using zhell!
 | 触      | chù          | `touch`    | 创建空文件或更新文件时间戳        |
 | 少      | shǎo         | `less`     | 用分页器查看文件内容              |
 | 多      | duō          | `more`     | 用分页器查看文件内容（只能向前）  |
+| 编辑     | biānjí       | `vim`      | 用 vim 编辑文件                   |
 | 这个目录 | zhège mùlù   | `pwd`      | 打印当前目录                      |
 | 运行     | yùnxíng      | —          | 运行指定路径的程序                |
 
