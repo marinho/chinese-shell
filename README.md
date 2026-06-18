@@ -16,7 +16,9 @@ Welcome to zhell! Type '出口' to exit.
 
 Chinese       Pinyin                Description
 --------------------------------------------------
+帮            bāng                  show available commands
 出口          chūkǒu                exit the shell
+进入          jìnrù                 change current directory
 这个目录      zhège mùlù            print working directory
 运行          yùnxíng               run a program at the given path
 
@@ -34,7 +36,9 @@ Goodbye! Thanks for using zhell!
 
 | Chinese  | Pinyin       | Equivalent | Description                        |
 |----------|--------------|------------|------------------------------------|
+| 帮       | bāng         | `help`     | Show available commands            |
 | 出口     | chūkǒu       | `exit`     | Exit the shell                     |
+| 进入     | jìnrù        | `cd`       | Change current directory           |
 | 这个目录 | zhège mùlù   | `pwd`      | Print working directory            |
 | 运行     | yùnxíng      | —          | Run a program at the given path    |
 
