@@ -26,6 +26,7 @@ Chinese       Pinyin                Description
 列出          lièchū                list files in current directory
 进入          jìnrù                 change current directory
 猫            māo                   print contents of a file
+触            chù                   create an empty file or update its timestamp
 这个目录       zhège mùlù            print working directory
 运行          yùnxíng               run a program at the given path
 
@@ -41,16 +42,17 @@ Goodbye! Thanks for using zhell!
 
 ## Commands
 
-| Chinese  | Pinyin       | Equivalent | Description                        |
-|----------|--------------|------------|------------------------------------|
-| 帮       | bāng         | `help`     | Show available commands            |
-| 出口     | chūkǒu       | `exit`     | Exit the shell                     |
-| 日期     | rìqī         | `date`     | Print current date and time        |
-| 列出     | lièchū       | `ls -la`   | List files in current directory    |
-| 进入     | jìnrù        | `cd`       | Change current directory           |
-| 猫      | māo          | `cat`      | Print contents of a file           |
-| 这个目录 | zhège mùlù   | `pwd`      | Print working directory            |
-| 运行     | yùnxíng      | —          | Run a program at the given path    |
+| Chinese  | Pinyin       | Equivalent | Description                                    |
+|----------|--------------|------------|------------------------------------------------|
+| 帮       | bāng         | `help`     | Show available commands                        |
+| 出口     | chūkǒu       | `exit`     | Exit the shell                                 |
+| 日期     | rìqī         | `date`     | Print current date and time                    |
+| 列出     | lièchū       | `ls -la`   | List files in current directory                |
+| 进入     | jìnrù        | `cd`       | Change current directory                       |
+| 猫      | māo          | `cat`      | Print contents of a file                       |
+| 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
+| 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
+| 运行     | yùnxíng      | —          | Run a program at the given path                |
 
 ## Adding a command
 
