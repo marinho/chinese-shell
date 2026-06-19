@@ -32,6 +32,7 @@ Goodbye! Thanks for using zhell!
 | 帮       | bāng         | `help`     | Show available commands                        |
 | 出口     | chūkǒu       | `exit`     | Exit the shell                                 |
 | 关于     | guānyú       | —          | Show author and project information            |
+| 清屏     | qīng píng    | `clear`    | Clear the screen                               |
 | 日期     | rìqī         | `date`     | Print current date and time                    |
 | 列出     | lièchū       | `ls -la`   | List files in current directory                |
 | 这个目录 | zhège mùlù   | `pwd`      | Print working directory                        |
