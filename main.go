@@ -18,6 +18,60 @@ import (
 
 const prompt = "zhell> "
 
+// pathCompleter completes filesystem paths for the last argument on the line.
+type pathCompleter struct{}
+
+func (p *pathCompleter) Do(line []rune, pos int) ([][]rune, int) {
+	// work only on the segment up to the cursor
+	input := string(line[:pos])
+	parts := strings.Fields(input)
+
+	var prefix string
+	if len(parts) == 0 || (len(parts) == 1 && !strings.HasSuffix(input, " ")) {
+		// still typing the command name — no path completion
+		return nil, 0
+	}
+	if strings.HasSuffix(input, " ") {
+		prefix = ""
+	} else {
+		prefix = parts[len(parts)-1]
+	}
+
+	dir, file := filepath.Split(prefix)
+	searchDir := dir
+	if searchDir == "" {
+		searchDir = "."
+	}
+
+	entries, err := os.ReadDir(searchDir)
+	if err != nil {
+		return nil, 0
+	}
+
+	var matches []string
+	for _, e := range entries {
+		name := e.Name()
+		if strings.HasPrefix(name, file) {
+			full := dir + name
+			if e.IsDir() {
+				full += "/"
+			}
+			matches = append(matches, full)
+		}
+	}
+
+	if len(matches) == 0 {
+		return nil, 0
+	}
+
+	// strip the already-typed prefix so readline inserts only the completion
+	completions := make([][]rune, len(matches))
+	for i, m := range matches {
+		completions[i] = []rune(m[len(prefix):])
+	}
+	return completions, len([]rune(prefix))
+}
+
 func main() {
 	commands.SetVersion(version)
 	fmt.Printf("欢迎使用 zhell v%s！输入 '出口' 退出。\n", version)
@@ -34,6 +88,7 @@ func main() {
 		HistoryLimit:    100,
 		InterruptPrompt: "^C",
 		EOFPrompt:       "exit",
+		AutoComplete:    &pathCompleter{},
 	})
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "zhell: readline init error: %v\n", err)
