@@ -37,7 +37,7 @@ Goodbye! Thanks for using zhell!
 | 列出     | lièchū       | `ls -la`   | 列出当前目录的文件                |
 | 进入     | jìnrù        | `cd`       | 切换当前目录                      |
 | 猫      | māo          | `cat`      | 打印文件内容                      |
-| 触      | chù          | `touch`    | 创建空文件或更新文件时间戳        |
+| 新文件   | xīn wénjiàn  | `touch`    | 创建新空文件                      |
 | 少      | shǎo         | `less`     | 用分页器查看文件内容              |
 | 多      | duō          | `more`     | 用分页器查看文件内容（只能向前）  |
 | 编辑     | biānjí       | `vim`      | 用 vim 编辑文件                   |

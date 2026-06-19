@@ -43,7 +43,7 @@ Goodbye! Thanks for using zhell!
 | 新目录   | xīn mùlù    | `mkdir`    | Create a new directory                         |
 | 运行     | yùnxíng      | —          | Run a program at the given path                |
 | 猫      | māo          | `cat`      | Print contents of a file                       |
-| 触      | chù          | `touch`    | Create an empty file or update its timestamp   |
+| 新文件   | xīn wénjiàn  | `touch`    | Create a new empty file                        |
 | 多      | duō          | `more`     | View file contents with a pager (forward only) |
 | 少      | shǎo         | `less`     | View file contents with a pager                |
 | 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
