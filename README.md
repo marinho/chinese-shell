@@ -47,6 +47,7 @@ Goodbye! Thanks for using zhell!
 | 多      | duō          | `more`     | View file contents with a pager (forward only) |
 | 少      | shǎo         | `less`     | View file contents with a pager                |
 | 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
+| 蠢货     | chǔnhuò      | `git`      | Run git with the given arguments               |
 
 ## Adding a command
 

@@ -41,6 +41,7 @@ Goodbye! Thanks for using zhell!
 | 少      | shǎo         | `less`     | 用分页器查看文件内容              |
 | 多      | duō          | `more`     | 用分页器查看文件内容（只能向前）  |
 | 编辑     | biānjí       | `vim`      | 用 vim 编辑文件                   |
+| 蠢货     | chǔnhuò      | `git`      | 运行 git 命令                     |
 | 移动     | yídòng       | `mv`       | 移动或重命名文件或目录            |
 | 复制     | fùzhì        | `cp`       | 复制文件或目录到另一路径          |
 | 删除     | shānchú      | `rm`       | 删除文件或目录                    |
