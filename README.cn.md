@@ -45,6 +45,7 @@ Goodbye! Thanks for using zhell!
 | 改权限   | gǎi quánxiàn | `chmod`    | 修改文件权限                      |
 | 改群组   | gǎi qúnzǔ    | `chgrp`    | 修改文件群组                      |
 | 改归属   | gǎi guīshǔ   | `chown`    | 修改文件归属者                    |
+| 看归属   | kàn guīshǔ   | —          | 显示文件的归属者和群组            |
 | 列用户   | liè yònghù   | —          | 列出系统所有用户                  |
 | 列群组   | liè qúnzǔ    | —          | 列出系统所有群组                  |
 | 我是谁   | wǒ shì shuí  | `whoami`   | 打印当前用户                      |
