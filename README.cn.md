@@ -47,6 +47,7 @@ Goodbye! Thanks for using zhell!
 | 改归属   | gǎi guīshǔ   | `chown`    | 修改文件归属者                    |
 | 列用户   | liè yònghù   | —          | 列出系统所有用户                  |
 | 列群组   | liè qúnzǔ    | —          | 列出系统所有群组                  |
+| 我是谁   | wǒ shì shuí  | `whoami`   | 打印当前用户                      |
 | 移动     | yídòng       | `mv`       | 移动或重命名文件或目录            |
 | 复制     | fùzhì        | `cp`       | 复制文件或目录到另一路径          |
 | 删除     | shānchú      | `rm`       | 删除文件或目录                    |

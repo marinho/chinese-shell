@@ -53,6 +53,7 @@ Goodbye! Thanks for using zhell!
 | 改归属   | gǎi guīshǔ   | `chown`    | Change file owner                              |
 | 列用户   | liè yònghù   | —          | List all users on the system                   |
 | 列群组   | liè qúnzǔ    | —          | List all groups on the system                  |
+| 我是谁   | wǒ shì shuí  | `whoami`   | Print current user                             |
 
 ## Adding a command
 
