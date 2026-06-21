@@ -42,6 +42,11 @@ Goodbye! Thanks for using zhell!
 | 多      | duō          | `more`     | 用分页器查看文件内容（只能向前）  |
 | 编辑     | biānjí       | `vim`      | 用 vim 编辑文件                   |
 | 蠢货     | chǔnhuò      | `git`      | 运行 git 命令                     |
+| 改权限   | gǎi quánxiàn | `chmod`    | 修改文件权限                      |
+| 改群组   | gǎi qúnzǔ    | `chgrp`    | 修改文件群组                      |
+| 改归属   | gǎi guīshǔ   | `chown`    | 修改文件归属者                    |
+| 列用户   | liè yònghù   | —          | 列出系统所有用户                  |
+| 列群组   | liè qúnzǔ    | —          | 列出系统所有群组                  |
 | 移动     | yídòng       | `mv`       | 移动或重命名文件或目录            |
 | 复制     | fùzhì        | `cp`       | 复制文件或目录到另一路径          |
 | 删除     | shānchú      | `rm`       | 删除文件或目录                    |

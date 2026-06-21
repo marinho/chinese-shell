@@ -48,6 +48,11 @@ Goodbye! Thanks for using zhell!
 | 少      | shǎo         | `less`     | View file contents with a pager                |
 | 编辑     | biānjí       | `vim`      | Edit a file in vim                             |
 | 蠢货     | chǔnhuò      | `git`      | Run git with the given arguments               |
+| 改权限   | gǎi quánxiàn | `chmod`    | Change file permissions                        |
+| 改群组   | gǎi qúnzǔ    | `chgrp`    | Change file group                              |
+| 改归属   | gǎi guīshǔ   | `chown`    | Change file owner                              |
+| 列用户   | liè yònghù   | —          | List all users on the system                   |
+| 列群组   | liè qúnzǔ    | —          | List all groups on the system                  |
 
 ## Adding a command
 
