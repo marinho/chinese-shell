@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
-	"time"
+	"os/user"
+	"strconv"
+	"syscall"
 )
 
 func init() {
@@ -48,6 +50,23 @@ func (l *lsCmd) Execute(args []string) error {
 func printEntry(info fs.FileInfo, name string) {
 	mode := info.Mode()
 	size := info.Size()
-	mod := info.ModTime().Format(time.DateTime)
-	fmt.Printf("%s  %8d  %s  %s\n", mode, size, mod, name)
+	mod := info.ModTime().Format("2006年01月02日 15:04:05")
+
+	owner, group := "-", "-"
+	if stat, ok := info.Sys().(*syscall.Stat_t); ok {
+		uid := strconv.Itoa(int(stat.Uid))
+		gid := strconv.Itoa(int(stat.Gid))
+		if u, err := user.LookupId(uid); err == nil {
+			owner = u.Username
+		} else {
+			owner = uid
+		}
+		if g, err := user.LookupGroupId(gid); err == nil {
+			group = g.Name
+		} else {
+			group = gid
+		}
+	}
+
+	fmt.Printf("%s  %8d  %-12s  %-12s  %s  %s\n", mode, size, owner, group, mod, name)
 }
