@@ -13,6 +13,7 @@ type echoCmd struct{}
 
 func (e *echoCmd) Name() string        { return "说" }
 func (e *echoCmd) Pinyin() string      { return "shuō" }
+func (e *echoCmd) Linux() string       { return "echo" }
 func (e *echoCmd) Description() string { return "print arguments to stdout" }
 func (e *echoCmd) Execute(args []string) error {
 	fmt.Println(strings.Join(args, " "))

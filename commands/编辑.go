@@ -14,6 +14,7 @@ type editCmd struct{}
 
 func (e *editCmd) Name() string        { return "编辑" }
 func (e *editCmd) Pinyin() string      { return "biānjí" }
+func (e *editCmd) Linux() string       { return "vim" }
 func (e *editCmd) Description() string { return "edit a file in vim" }
 func (e *editCmd) Execute(args []string) error {
 	if len(args) == 0 {

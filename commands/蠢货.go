@@ -14,6 +14,7 @@ type gitCmd struct{}
 
 func (g *gitCmd) Name() string        { return "蠢货" }
 func (g *gitCmd) Pinyin() string      { return "chǔnhuò" }
+func (g *gitCmd) Linux() string       { return "git" }
 func (g *gitCmd) Description() string { return "run git with the given arguments" }
 func (g *gitCmd) Execute(args []string) error {
 	if _, err := exec.LookPath("git"); err != nil {

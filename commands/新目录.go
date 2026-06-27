@@ -14,6 +14,7 @@ type mkdirCmd struct{}
 
 func (m *mkdirCmd) Name() string        { return "新目录" }
 func (m *mkdirCmd) Pinyin() string      { return "xīn mùlù" }
+func (m *mkdirCmd) Linux() string       { return "mkdir" }
 func (m *mkdirCmd) Description() string { return "create a new directory" }
 func (m *mkdirCmd) Execute(args []string) error {
 	if len(args) == 0 {

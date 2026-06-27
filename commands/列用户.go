@@ -14,6 +14,7 @@ type listUsersCmd struct{}
 
 func (c *listUsersCmd) Name() string        { return "列用户" }
 func (c *listUsersCmd) Pinyin() string      { return "liè yònghù" }
+func (c *listUsersCmd) Linux() string       { return "getent passwd" }
 func (c *listUsersCmd) Description() string { return "list all users on the system" }
 func (c *listUsersCmd) Execute(args []string) error {
 	users, err := getAllUsers()

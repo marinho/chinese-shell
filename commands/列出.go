@@ -17,6 +17,7 @@ type lsCmd struct{}
 
 func (l *lsCmd) Name() string        { return "列出" }
 func (l *lsCmd) Pinyin() string      { return "lièchū" }
+func (l *lsCmd) Linux() string       { return "ls" }
 func (l *lsCmd) Description() string { return "list files in current directory" }
 func (l *lsCmd) Execute(args []string) error {
 	dir := "."

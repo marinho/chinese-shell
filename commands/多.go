@@ -14,6 +14,7 @@ type moreCmd struct{}
 
 func (m *moreCmd) Name() string        { return "多" }
 func (m *moreCmd) Pinyin() string      { return "duō" }
+func (m *moreCmd) Linux() string       { return "more" }
 func (m *moreCmd) Description() string { return "view file contents with a pager (forward only)" }
 func (m *moreCmd) Execute(args []string) error {
 	if len(args) == 0 {

@@ -14,6 +14,7 @@ type chmodCmd struct{}
 
 func (c *chmodCmd) Name() string        { return "改权限" }
 func (c *chmodCmd) Pinyin() string      { return "gǎi quánxiàn" }
+func (c *chmodCmd) Linux() string       { return "chmod" }
 func (c *chmodCmd) Description() string { return "change file permissions" }
 func (c *chmodCmd) Execute(args []string) error {
 	if len(args) < 2 {

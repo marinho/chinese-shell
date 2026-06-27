@@ -14,6 +14,7 @@ type newFileCmd struct{}
 
 func (n *newFileCmd) Name() string        { return "新文件" }
 func (n *newFileCmd) Pinyin() string      { return "xīn wénjiàn" }
+func (n *newFileCmd) Linux() string       { return "touch" }
 func (n *newFileCmd) Description() string { return "create a new empty file" }
 func (n *newFileCmd) Execute(args []string) error {
 	if len(args) == 0 {

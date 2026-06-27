@@ -14,6 +14,8 @@ type Command interface {
 	Name() string
 	// Pinyin returns the romanised pronunciation (e.g. "chūkǒu").
 	Pinyin() string
+	// Linux returns the equivalent Linux/Unix command (e.g. "exit").
+	Linux() string
 	// Description is a short help string shown in the shell.
 	Description() string
 	// Execute runs the command with the given arguments.
@@ -61,7 +63,7 @@ func PrintTable() {
 	}
 	sort.Strings(keys)
 
-	const colChinese, colPinyin = 14, 22
+	const colChinese, colPinyin, colLinux = 14, 22, 14
 	pad := func(s string, width int) string {
 		w := runewidth.StringWidth(s)
 		if w >= width {
@@ -70,10 +72,10 @@ func PrintTable() {
 		return s + strings.Repeat(" ", width-w)
 	}
 
-	fmt.Printf("%s  %s  %s\n", pad("Chinese", colChinese), pad("Pinyin", colPinyin), "Description")
-	fmt.Println(strings.Repeat("-", colChinese+colPinyin+20))
+	fmt.Printf("%s  %s  %s  %s\n", pad("Chinese", colChinese), pad("Pinyin", colPinyin), pad("Linux", colLinux), "Description")
+	fmt.Println(strings.Repeat("-", colChinese+colPinyin+colLinux+24))
 	for _, k := range keys {
 		cmd := all[k]
-		fmt.Printf("%s  %s  %s\n", pad(cmd.Name(), colChinese), pad(cmd.Pinyin(), colPinyin), cmd.Description())
+		fmt.Printf("%s  %s  %s  %s\n", pad(cmd.Name(), colChinese), pad(cmd.Pinyin(), colPinyin), pad(cmd.Linux(), colLinux), cmd.Description())
 	}
 }

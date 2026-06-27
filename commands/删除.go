@@ -13,6 +13,7 @@ type rmCmd struct{}
 
 func (r *rmCmd) Name() string        { return "删除" }
 func (r *rmCmd) Pinyin() string      { return "shānchú" }
+func (r *rmCmd) Linux() string       { return "rm" }
 func (r *rmCmd) Description() string { return "remove a file or directory" }
 func (r *rmCmd) Execute(args []string) error {
 	if len(args) == 0 {

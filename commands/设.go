@@ -13,6 +13,7 @@ type setenvCmd struct{}
 
 func (s *setenvCmd) Name() string        { return "设" }
 func (s *setenvCmd) Pinyin() string      { return "shè" }
+func (s *setenvCmd) Linux() string       { return "export" }
 func (s *setenvCmd) Description() string { return "set an environment variable" }
 func (s *setenvCmd) Execute(args []string) error {
 	if len(args) < 2 {

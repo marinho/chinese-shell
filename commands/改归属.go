@@ -14,6 +14,7 @@ type chownCmd struct{}
 
 func (c *chownCmd) Name() string        { return "改归属" }
 func (c *chownCmd) Pinyin() string      { return "gǎi guīshǔ" }
+func (c *chownCmd) Linux() string       { return "chown" }
 func (c *chownCmd) Description() string { return "change file owner" }
 func (c *chownCmd) Execute(args []string) error {
 	if len(args) < 2 {

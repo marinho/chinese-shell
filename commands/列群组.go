@@ -13,6 +13,7 @@ type listGroupsCmd struct{}
 
 func (c *listGroupsCmd) Name() string        { return "列群组" }
 func (c *listGroupsCmd) Pinyin() string      { return "liè qúnzǔ" }
+func (c *listGroupsCmd) Linux() string       { return "getent group" }
 func (c *listGroupsCmd) Description() string { return "list all groups on the system" }
 func (c *listGroupsCmd) Execute(args []string) error {
 	groups, err := getAllGroups()

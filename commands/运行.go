@@ -14,6 +14,7 @@ type runCmd struct{}
 
 func (r *runCmd) Name() string        { return "运行" }
 func (r *runCmd) Pinyin() string      { return "yùnxíng" }
+func (r *runCmd) Linux() string       { return "./" }
 func (r *runCmd) Description() string { return "run a program at the given path" }
 func (r *runCmd) Execute(args []string) error {
 	if len(args) == 0 {

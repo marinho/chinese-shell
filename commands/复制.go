@@ -15,6 +15,7 @@ type cpCmd struct{}
 
 func (c *cpCmd) Name() string        { return "复制" }
 func (c *cpCmd) Pinyin() string      { return "fùzhì" }
+func (c *cpCmd) Linux() string       { return "cp" }
 func (c *cpCmd) Description() string { return "copy a file or directory to another path" }
 func (c *cpCmd) Execute(args []string) error {
 	if len(args) != 2 {

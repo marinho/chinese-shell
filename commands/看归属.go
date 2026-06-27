@@ -15,6 +15,7 @@ type statOwnerCmd struct{}
 
 func (c *statOwnerCmd) Name() string        { return "看归属" }
 func (c *statOwnerCmd) Pinyin() string      { return "kàn guīshǔ" }
+func (c *statOwnerCmd) Linux() string       { return "stat" }
 func (c *statOwnerCmd) Description() string { return "show owner and group of a file" }
 func (c *statOwnerCmd) Execute(args []string) error {
 	if len(args) == 0 {

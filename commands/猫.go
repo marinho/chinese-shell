@@ -14,6 +14,7 @@ type catCmd struct{}
 
 func (c *catCmd) Name() string        { return "猫" }
 func (c *catCmd) Pinyin() string      { return "māo" }
+func (c *catCmd) Linux() string       { return "cat" }
 func (c *catCmd) Description() string { return "print contents of a file" }
 func (c *catCmd) Execute(args []string) error {
 	if len(args) == 0 {

@@ -13,6 +13,7 @@ type cdCmd struct{}
 
 func (c *cdCmd) Name() string        { return "进入" }
 func (c *cdCmd) Pinyin() string      { return "jìnrù" }
+func (c *cdCmd) Linux() string       { return "cd" }
 func (c *cdCmd) Description() string { return "change current directory" }
 func (c *cdCmd) Execute(args []string) error {
 	if len(args) == 0 {

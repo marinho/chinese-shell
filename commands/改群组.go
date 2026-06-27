@@ -14,6 +14,7 @@ type chgrpCmd struct{}
 
 func (c *chgrpCmd) Name() string        { return "改群组" }
 func (c *chgrpCmd) Pinyin() string      { return "gǎi qúnzǔ" }
+func (c *chgrpCmd) Linux() string       { return "chgrp" }
 func (c *chgrpCmd) Description() string { return "change file group" }
 func (c *chgrpCmd) Execute(args []string) error {
 	if len(args) < 2 {
