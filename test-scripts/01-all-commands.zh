@@ -33,6 +33,10 @@
 # echo
 说 你好，世界！
 
+# environment variables
+设 ZHELL_TEST 你好
+说 $ZHELL_TEST
+
 # clean up
 删除 hello.txt
 删除 hello-copy.txt

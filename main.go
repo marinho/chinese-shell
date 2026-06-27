@@ -24,6 +24,7 @@ func executeLine(line string) error {
 	if line == "" || strings.HasPrefix(line, "#") {
 		return nil
 	}
+	line = os.ExpandEnv(line)
 	parts := strings.Fields(line)
 	name, args := parts[0], parts[1:]
 	cmd, ok := commands.Lookup(name)
