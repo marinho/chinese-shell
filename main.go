@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"os"
@@ -17,6 +18,47 @@ import (
 )
 
 const prompt = "zhell> "
+
+func executeLine(line string) error {
+	line = strings.TrimSpace(line)
+	if line == "" || strings.HasPrefix(line, "#") {
+		return nil
+	}
+	parts := strings.Fields(line)
+	name, args := parts[0], parts[1:]
+	cmd, ok := commands.Lookup(name)
+	if !ok {
+		return fmt.Errorf("未知命令: %s", name)
+	}
+	return cmd.Execute(args)
+}
+
+func runScript(path string) {
+	f, err := os.Open(path)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "zhell: %v\n", err)
+		os.Exit(1)
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+	lineNum := 0
+	for scanner.Scan() {
+		lineNum++
+		line := scanner.Text()
+		if strings.HasPrefix(line, "#!") {
+			continue // skip shebang
+		}
+		if err := executeLine(line); err != nil {
+			fmt.Fprintf(os.Stderr, "zhell: %s:%d: %v\n", path, lineNum, err)
+			os.Exit(1)
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintf(os.Stderr, "zhell: 读取脚本错误: %v\n", err)
+		os.Exit(1)
+	}
+}
 
 // pathCompleter completes filesystem paths for the last argument on the line.
 type pathCompleter struct{}
@@ -74,6 +116,17 @@ func (p *pathCompleter) Do(line []rune, pos int) ([][]rune, int) {
 
 func main() {
 	commands.SetVersion(version)
+
+	if len(os.Args) > 1 {
+		path := os.Args[1]
+		if ext := filepath.Ext(path); ext != ".zh" {
+			fmt.Fprintf(os.Stderr, "zhell: 脚本文件必须以 .zh 结尾 (script file must have .zh extension)\n")
+			os.Exit(1)
+		}
+		runScript(path)
+		return
+	}
+
 	fmt.Printf("欢迎使用 zhell v%s！输入 '出口' 退出。\n", version)
 	fmt.Printf("Welcome to zhell v%s! Type '出口' to exit.\n", version)
 	fmt.Println()
@@ -110,21 +163,7 @@ func main() {
 			break
 		}
 
-		line = strings.TrimSpace(line)
-		if line == "" {
-			continue
-		}
-
-		parts := strings.Fields(line)
-		name, args := parts[0], parts[1:]
-
-		cmd, ok := commands.Lookup(name)
-		if !ok {
-			fmt.Fprintf(os.Stderr, "zhell: 未知命令: %s\n", name)
-			continue
-		}
-
-		if err := cmd.Execute(args); err != nil {
+		if err := executeLine(line); err != nil {
 			fmt.Fprintf(os.Stderr, "zhell: 错误: %v\n", err)
 		}
 	}

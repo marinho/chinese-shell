@@ -1,0 +1,41 @@
+#!/usr/bin/env zhell
+# 01-all-commands.zh — smoke test for common zhell commands
+
+# show current date and user
+日期
+我是谁
+
+# show current directory
+这个目录
+
+# work inside ./temp/
+进入 temp
+新目录 zh-test-tmp
+进入 zh-test-tmp
+
+# create some files
+新文件 hello.txt
+新文件 world.txt
+
+# list contents
+列出 .
+
+# copy and move
+复制 hello.txt hello-copy.txt
+移动 world.txt world-moved.txt
+
+# list again to verify
+列出 .
+
+# read a file
+猫 hello.txt
+
+# echo
+说 你好，世界！
+
+# clean up
+删除 hello.txt
+删除 hello-copy.txt
+删除 world-moved.txt
+进入 ../..
+删除 temp/zh-test-tmp
