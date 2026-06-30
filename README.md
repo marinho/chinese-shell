@@ -104,6 +104,7 @@ zhell: 错误: 未知命令: cat
 | 列用户   | liè yònghù   | `getent passwd` | List all users on the system                   |
 | 列群组   | liè qúnzǔ    | `getent group`  | List all groups on the system                  |
 | 我是谁   | wǒ shì shuí  | `whoami`        | Print current user                             |
+| 提权     | tí quán      | `sudo`          | Run a zhell command as superuser               |
 | 设       | shè          | `export`        | Set an environment variable                    |
 | 说       | shuō         | `echo`          | Print arguments to stdout                      |
 
