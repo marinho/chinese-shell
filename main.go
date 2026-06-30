@@ -29,6 +29,10 @@ func executeLine(line string) error {
 	name, args := parts[0], parts[1:]
 	cmd, ok := commands.Lookup(name)
 	if !ok {
+		if suggestion, found := commands.LookupByLinux(name); found {
+			fmt.Fprintf(os.Stdout, "do you mean %s [%s]?\n", suggestion.Name(), suggestion.Pinyin())
+			return nil
+		}
 		return fmt.Errorf("未知命令: %s", name)
 	}
 	return cmd.Execute(args)

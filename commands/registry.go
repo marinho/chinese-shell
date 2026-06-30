@@ -45,6 +45,16 @@ func Lookup(name string) (Command, bool) {
 	return cmd, ok
 }
 
+// LookupByLinux returns the command whose Linux() value matches the given string.
+func LookupByLinux(linux string) (Command, bool) {
+	for _, cmd := range registry {
+		if cmd.Linux() == linux {
+			return cmd, true
+		}
+	}
+	return nil, false
+}
+
 // All returns a copy of the full command registry.
 func All() map[string]Command {
 	out := make(map[string]Command, len(registry))
