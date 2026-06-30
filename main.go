@@ -123,6 +123,26 @@ func main() {
 	commands.SetVersion(version)
 
 	if len(os.Args) > 1 {
+		switch os.Args[1] {
+		case "--help", "--帮":
+			fmt.Printf("Usage: zhell [options]\n\n")
+			fmt.Printf("Options:\n")
+			fmt.Printf("  -c <command>   Execute a command string inline\n")
+			fmt.Printf("  --help, --帮   Show this help message\n")
+			fmt.Printf("  <file.zh>      Run a .zh script file\n")
+			fmt.Printf("\nWithout arguments, starts the interactive shell.\n")
+			return
+		case "-c":
+			if len(os.Args) < 3 {
+				fmt.Fprintf(os.Stderr, "zhell: -c requires a command string\n")
+				os.Exit(1)
+			}
+			if err := executeLine(os.Args[2]); err != nil {
+				fmt.Fprintf(os.Stderr, "zhell: 错误: %v\n", err)
+				os.Exit(1)
+			}
+			return
+		}
 		path := os.Args[1]
 		if ext := filepath.Ext(path); ext != ".zh" {
 			fmt.Fprintf(os.Stderr, "zhell: 脚本文件必须以 .zh 结尾 (script file must have .zh extension)\n")
@@ -134,8 +154,7 @@ func main() {
 
 	fmt.Printf("欢迎使用 zhell v%s！输入 '出口' 退出。\n", version)
 	fmt.Printf("Welcome to zhell v%s! Type '出口' to exit.\n", version)
-	fmt.Println()
-	commands.PrintTable()
+	fmt.Printf("Type '帮' for a list of available commands.\n")
 	fmt.Println()
 
 	historyFile := filepath.Join(os.Getenv("HOME"), ".zhell_history")
