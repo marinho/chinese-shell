@@ -27,6 +27,17 @@ zhell> 出口
 Goodbye! Thanks for using zhell!
 ```
 
+Type `帮` at the prompt to see all available commands.
+
+### Inline command
+
+Run a single command without entering the REPL:
+
+```
+./bin/zhell -c "日期"
+./bin/zhell -c "列出 /tmp"
+```
+
 ### Script mode
 
 Save a script with a `.zh` extension and run it directly:
@@ -42,6 +53,25 @@ Scripts support `#` comments and shebang lines (`#!/usr/bin/env zhell`), so you 
 # hello-world.zh
 说 你好，世界！
 日期
+```
+
+### CLI options
+
+| Option         | Description                        |
+|----------------|------------------------------------|
+| `-c <command>` | Execute a command string inline    |
+| `--help`       | Show usage information             |
+| `--帮`         | Show usage information (Chinese)   |
+| `<file.zh>`    | Run a `.zh` script file            |
+
+## English command suggestions
+
+If you type a command in English that has a Chinese equivalent, zhell will suggest the Chinese command:
+
+```
+zhell> cat README.md
+do you mean 猫 [māo]?
+zhell: 错误: 未知命令: cat
 ```
 
 ## Commands
