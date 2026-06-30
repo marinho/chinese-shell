@@ -15,11 +15,23 @@ import (
 	// Add a new file under commands/ and call Register() in its init()
 	// — no changes to main.go are needed.
 	"zhell/commands"
+	"zhell/score"
 )
 
 const prompt = "zhell> "
 
-func executeLine(line string) error {
+func scorePrompt(pts int) string {
+	return fmt.Sprintf("zhell [%d]> ", pts)
+}
+
+// session holds REPL state across commands.
+type session struct {
+	sc           *score.Store
+	comboStreak  int
+	lastCmd      string // last successfully executed Chinese command
+}
+
+func (s *session) executeLine(line string) error {
 	line = strings.TrimSpace(line)
 	if line == "" || strings.HasPrefix(line, "#") {
 		return nil
@@ -27,15 +39,63 @@ func executeLine(line string) error {
 	line = os.ExpandEnv(line)
 	parts := strings.Fields(line)
 	name, args := parts[0], parts[1:]
+
 	cmd, ok := commands.Lookup(name)
 	if !ok {
 		if suggestion, found := commands.LookupByLinux(name); found {
 			fmt.Fprintf(os.Stdout, "do you mean %s [%s]?\n", suggestion.Name(), suggestion.Pinyin())
+			if s.sc != nil {
+				s.sc.Add(score.PointsEnglish)
+				s.sc.Save()
+				s.comboStreak = 0
+			}
 			return nil
+		}
+		if s.sc != nil {
+			s.sc.Add(score.PointsUnknown)
+			s.sc.Save()
+			s.comboStreak = 0
 		}
 		return fmt.Errorf("未知命令: %s", name)
 	}
-	return cmd.Execute(args)
+
+	err := cmd.Execute(args)
+	if err != nil {
+		return err
+	}
+
+	if s.sc != nil && name != "分数" && name != "帮" {
+		if name == s.lastCmd {
+			// no points for repeating the same command
+		} else {
+			pts := score.PointsCorrect
+
+			// first use of this command today
+			if s.sc.IsFirstToday(name) {
+				pts += score.PointsFirstOfDay
+			}
+
+			// combo: consecutive different commands
+			if s.lastCmd != "" {
+				s.comboStreak++
+				pts += score.PointsComboBonus * s.comboStreak
+			} else {
+				s.comboStreak = 0
+			}
+
+			s.sc.Add(pts)
+			s.sc.Save()
+		}
+		s.lastCmd = name
+	}
+
+	return nil
+}
+
+// executeLine is a package-level helper for script/inline mode (no scoring).
+func executeLine(line string) error {
+	sess := &session{}
+	return sess.executeLine(line)
 }
 
 func runScript(path string) {
@@ -152,6 +212,12 @@ func main() {
 		return
 	}
 
+	sc, err := score.Load()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "zhell: warning: could not load score: %v\n", err)
+	}
+	commands.SetScore(sc)
+
 	fmt.Printf("欢迎使用 zhell v%s！输入 '出口' 退出。\n", version)
 	fmt.Printf("Welcome to zhell v%s! Type '出口' to exit.\n", version)
 	fmt.Printf("Type '帮' for a list of available commands.\n")
@@ -160,7 +226,7 @@ func main() {
 	historyFile := filepath.Join(os.Getenv("HOME"), ".zhell_history")
 
 	rl, err := readline.NewEx(&readline.Config{
-		Prompt:          prompt,
+		Prompt:          scorePrompt(sc.AllTime),
 		HistoryFile:     historyFile,
 		HistoryLimit:    100,
 		InterruptPrompt: "^C",
@@ -172,6 +238,8 @@ func main() {
 		os.Exit(1)
 	}
 	defer rl.Close()
+
+	sess := &session{sc: sc}
 
 	for {
 		line, err := rl.Readline()
@@ -187,8 +255,9 @@ func main() {
 			break
 		}
 
-		if err := executeLine(line); err != nil {
+		if err := sess.executeLine(line); err != nil {
 			fmt.Fprintf(os.Stderr, "zhell: 错误: %v\n", err)
 		}
+		rl.SetPrompt(scorePrompt(sc.AllTime))
 	}
 }

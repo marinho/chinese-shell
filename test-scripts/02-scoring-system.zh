@@ -1,0 +1,5 @@
+#!/usr/bin/env zhell
+# 02-scoring-system.zh — smoke test for the scoring system
+
+# score command — should print score and rules (no points awarded)
+分数

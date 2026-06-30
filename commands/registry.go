@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/mattn/go-runewidth"
+	"zhell/score"
 )
 
 // Command is the interface every zhell command must implement.
@@ -26,12 +27,19 @@ type Command interface {
 var registry = map[string]Command{}
 
 var appVersion = "dev"
+var appScore *score.Store
 
 // SetVersion sets the application version shown in commands like 关于.
 func SetVersion(v string) { appVersion = v }
 
 // Version returns the current application version.
 func Version() string { return appVersion }
+
+// SetScore makes the score store available to commands like 分数.
+func SetScore(s *score.Store) { appScore = s }
+
+// Score returns the current score store (may be nil).
+func Score() *score.Store { return appScore }
 
 // Register adds a command to the global registry.
 // Typically called from an init() function in each command file.

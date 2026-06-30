@@ -71,8 +71,24 @@ If you type a command in English that has a Chinese equivalent, zhell will sugge
 ```
 zhell> cat README.md
 do you mean 猫 [māo]?
-zhell: 错误: 未知命令: cat
 ```
+
+## Gamification
+
+zhell tracks your score as you use it. The prompt shows your all-time score: `zhell [42]>`. Run `分数` at any time to see today/week/all-time totals and the full scoring rules.
+
+| Event                                      | Points          |
+|--------------------------------------------|-----------------|
+| Correct Chinese command                    | +1              |
+| First time using a command today           | +2 bonus        |
+| Combo streak (consecutive different cmds)  | +N per step     |
+| Typing an English equivalent               | −1, reset combo |
+| Unknown command                            | −1, reset combo |
+
+- Repeating the same command back-to-back scores no points and resets your combo streak.
+- Calling `帮` or `分数` never scores or deducts points.
+- Score never drops below 0.
+- Today's score, this week's score, and all-time total are all tracked separately in `~/.zhell_score.json`.
 
 ## Commands
 
@@ -104,6 +120,7 @@ zhell: 错误: 未知命令: cat
 | 列用户   | liè yònghù   | `getent passwd` | List all users on the system                   |
 | 列群组   | liè qúnzǔ    | `getent group`  | List all groups on the system                  |
 | 我是谁   | wǒ shì shuí  | `whoami`        | Print current user                             |
+| 分数     | fēnshù       | `score`         | Show your score and how the scoring system works |
 | 提权     | tí quán      | `sudo`          | Run a zhell command as superuser               |
 | 设       | shè          | `export`        | Set an environment variable                    |
 | 说       | shuō         | `echo`          | Print arguments to stdout                      |
